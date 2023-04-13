@@ -1,8 +1,10 @@
-def bisection(eps=0.0001, a0=-2, b0=3):
-    func = lambda x: (x)**2
+from init import *
+
+
+def bisection(eps=0.0001, _a0=a0, _b0=b0):
     a, b, epsn = [], [], []
-    a.append(a0)
-    b.append(b0)
+    a.append(_a0)
+    b.append(_b0)
     delta = eps / 2 * 3
 
     for i in range(1000):
@@ -18,7 +20,6 @@ def bisection(eps=0.0001, a0=-2, b0=3):
         if epsn[i] < eps:
             print(i)
             return ((a[i] + b[i]) / 2)
-            break
 
 
 print(bisection())

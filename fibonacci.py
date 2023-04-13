@@ -1,20 +1,22 @@
-def fibonacci(eps=0.001, a0=-10, b0=10):
+from init import *
+
+
+def fibonacci(eps=0.001, _a0=-a0, _b0=b0):
     n = 0
     for i in range(1000):
-        delta_n = ((2 / (5 ** (1 / 2) + 1)) ** (i + 1)) * ((b0 - a0) * 5 ** (1 / 2))
+        delta_n = ((2 / (5 ** (1 / 2) + 1)) ** (i + 1)) * ((_b0 - _a0) * 5 ** (1 / 2))
         if delta_n <= eps:
             n = i
             break
 
-    func = lambda x: (x) ** 2
     fib = lambda nn: (((1 + 5 ** (1 / 2)) / 2) ** nn - (((1 - 5 ** (1 / 2)) / 2) ** nn)) * 1 / 5 ** (1 / 2)
     a, b, epsn = [], [], []
-    a.append(a0)
-    b.append(b0)
+    a.append(_a0)
+    b.append(_b0)
     x1 = 0
     for i in range(n):
-        x1 = a[i] + (b0 - a0) * (fib(n - i) / fib(n + 1))
-        x2 = a[i] + (b0 - a0) * (fib(n - i + 1) / fib(n + 1))
+        x1 = a[i] + (_b0 - _a0) * (fib(n - i) / fib(n + 1))
+        x2 = a[i] + (_b0 - _a0) * (fib(n - i + 1) / fib(n + 1))
         if func(x1) <= func(x2):
             a.append(a[i])
             b.append(x2)

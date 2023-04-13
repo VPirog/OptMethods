@@ -1,8 +1,10 @@
-def goldenSection(eps=0.001, a0=-10, b0=10):
-    func = lambda x: (x ) ** 2
+from init import *
+
+
+def goldenSection(eps=0.001, _a0=a0, _b0=b0):
     a, b, epsn = [], [], []
-    a.append(a0)
-    b.append(b0)
+    a.append(_a0)
+    b.append(_b0)
     delta = eps / 2
 
     for i in range(1000):
