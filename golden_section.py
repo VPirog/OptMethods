@@ -1,7 +1,7 @@
 from init import *
 
 
-def goldenSection(eps=0.001, _a0=a0, _b0=b0):
+def golden_section(_a0=a0, _b0=b0, eps=epsilon):
     a, b, epsn = [], [], []
     a.append(_a0)
     b.append(_b0)
@@ -18,7 +18,8 @@ def goldenSection(eps=0.001, _a0=a0, _b0=b0):
             b.append(b[i])
         epsn.append(abs(b[i] - a[i]))
         if epsn[i] < eps:
-            return ((a[i] + b[i]) / 2)
+            print(i)
+            return (a[i] + b[i]) / 2
 
 
-print(goldenSection())
+

@@ -1,7 +1,7 @@
 from init import *
 
 
-def bisection(eps=0.0001, _a0=a0, _b0=b0):
+def bisection(_a0=a0, _b0=b0, eps=epsilon):
     a, b, epsn = [], [], []
     a.append(_a0)
     b.append(_b0)
@@ -22,4 +22,3 @@ def bisection(eps=0.0001, _a0=a0, _b0=b0):
             return ((a[i] + b[i]) / 2)
 
 
-print(bisection())
