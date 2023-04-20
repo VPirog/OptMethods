@@ -1,9 +1,7 @@
 from init import *
 
 
-def broken_lines(_a0=a0, _b0=b0, eps=epsilon):
-    L = 52
-
+def broken_lines(_a0=a0, _b0=b0, eps=epsilon, L = LL):
     x_opt = 1 / (2 * L) * (func(_a0) - func(_b0) + L * (_a0 + _b0))
     p = 1 / 2 * (func(_a0) + func(_b0) + L * (_a0 - _b0))
 
