@@ -28,4 +28,5 @@ def tangent(_a0=a0, _b0=b0, eps=epsilon):
         if tmp3 <= eps:
             print(i)
             return x[i + 1]
+    print("Не успел сойтись")
     return x.pop()
