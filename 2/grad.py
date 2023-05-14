@@ -8,17 +8,17 @@ def f(x):
 
 x_list = [np.array([1, 2, 3])]
 a = 0.001
-eps = 10 ** (-6)
+eps = 10 ** (-5)
+x_list.append(x_list[0] - approx_fprime(x_list[0], f))
 
-# x_list.append(x_list[0] - approx_fprime(x_list[0], f, epsilon=a))
-
-for i in range(0, 12):
-    # if f(x_list[i]) > f(x_list[i - 1]):
-    #     a /= 2
-    print(np.linalg.norm(approx_fprime(x_list[i], f, epsilon=eps)), x_list[i])
-    if np.linalg.norm(x_list[i]) < eps:
+for i in range(1, 10000):
+    if f(x_list[i]) > f(x_list[i - 1]):
+        a /= 2
+    tmp = approx_fprime(x_list[i], f)
+    # print(i, np.linalg.norm(tmp), x_list[i])
+    if np.linalg.norm(tmp) < eps:
         print(i)
         break
-    x_list.append(x_list[i] - approx_fprime(x_list[i], f, epsilon=eps))
+    x_list.append(x_list[i] - a * tmp)
 
 print(x_list[-1], f(x_list[-1]))
