@@ -1,7 +1,7 @@
 from init import *
 
 
-def fibonacci( _a0=-a0, _b0=b0, eps=epsilon):
+def fibonacci( _a0=a0, _b0=b0, eps=epsilon):
     n = 0
     for i in range(1000):
         delta_n = ((2 / (5 ** (1 / 2) + 1)) ** (i + 1)) * ((_b0 - _a0) * 5 ** (1 / 2))

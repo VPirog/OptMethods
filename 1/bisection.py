@@ -19,6 +19,6 @@ def bisection(_a0=a0, _b0=b0, eps=epsilon):
         epsn.append((b[0] - a[0] - delta) / 2 ** (i + 1) + delta / 2)
         if epsn[i] < eps:
             print(i)
-            return ((a[i] + b[i]) / 2)
+            return (a[i] + b[i]) / 2
 
 

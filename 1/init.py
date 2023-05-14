@@ -1,6 +1,6 @@
 from numpy import sin, pi, cos, linspace
 
-epsilon = 10 ** (-8)
+epsilon = 10 ** (-6)
 
 print("------Выберите функцию------")
 print("1 === x ** 2 - sin(x)")
