@@ -1,18 +1,5 @@
-import numpy as np
 from part_1 import golden_section
-
-
-def f(x):
-    return 3 * x[0] ** 2 + 5 * x[1] ** 2 + 4 * x[2] ** 2 + 2 * x[0] * x[1] - x[0] * x[2] - x[1] * x[2] + 7 * x[0] + x[2]
-
-
-def grad_f(x):
-    return np.array([6 * x[0] + 2 * x[1] - x[2] + 7, 2 * x[0] + 10 * x[1] - x[2], -x[0] - x[1] + 8 * x[2] + 1])
-
-
-def f_alpha(x, alpha):
-    return f(x - alpha * grad_f(x))
-
+from example import *
 
 alpha_min = 0.0001
 alpha_max = 1.0

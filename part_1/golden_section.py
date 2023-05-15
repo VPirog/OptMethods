@@ -20,5 +20,5 @@ def golden_section(func, _a0=a0, _b0=b0, eps=epsilon):
             b.append(b[i])
         epsn.append(abs(b[i] - a[i]))
         if epsn[i] < eps:
-            print(i)
+            # print(i)
             return (a[i] + b[i]) / 2
