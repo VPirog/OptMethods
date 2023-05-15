@@ -1,4 +1,5 @@
 import numpy as np
+from part_1 import golden_section
 
 
 def f(x):
@@ -13,36 +14,16 @@ def f_alpha(x, alpha):
     return f(x - alpha * grad_f(x))
 
 
-def alpha_max(x):
-    return 1.0
-
-
-def alpha_min(x):
-    return 0.0001
-
-
-def golden_section_search(x, alpha_max, alpha_min):
-    phi = (1 + np.sqrt(5)) / 2  # Золотое сечение
-    eps = 0.0001  # Точность
-    a = alpha_min
-    b = alpha_max
-    c = b - (b - a) / phi
-    d = a + (b - a) / phi
-    while abs(c - d) > eps:
-        if f_alpha(x, c) < f_alpha(x, d):
-            b = d
-        else:
-            a = c
-        c = b - (b - a) / phi
-        d = a + (b - a) / phi
-    return (b + a) / 2
+alpha_min = 0.0001
+alpha_max = 1.0
 
 
 def gradient_descent(x0, eps):
     x = x0
     i = 0
     while True:
-        alpha = golden_section_search(x, alpha_max(x), alpha_min(x))
+        f_alpha = lambda alpha: f(x - alpha * grad_f(x))
+        alpha = golden_section(f_alpha, alpha_max, alpha_min)
         x_new = x - alpha * grad_f(x)
         if np.linalg.norm(x_new - x) < eps:
             print(i)
@@ -56,7 +37,7 @@ def gradient(x0, eps):
     alpha_prev = 0
     i = 0
     while True:
-        alpha = alpha_min(x)
+        alpha = alpha_min
         while f(x - alpha * grad_f(x)) >= f(x) and alpha >= 1e-8:
             alpha /= 2
         if alpha < 1e-8:

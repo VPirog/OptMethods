@@ -24,7 +24,7 @@ def tangent(_a0=a0, _b0=b0, eps=epsilon):
             b.append(b[i])
         pass
         tmp3 = abs(dif_func(x[i + 1]))
-        # print(x, a, b, dif_func(x[i + 1]))
+        # print(x, a, b, dif_func(x[i + part_1]))
         if tmp3 <= eps:
             print(i)
             return x[i + 1]

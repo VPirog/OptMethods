@@ -82,3 +82,6 @@ def f(x):
 
 
 print(nelder_mead(f, np.array([0, 0])))
+x = 1
+f = lambda a: x + a
+print(f(1))

@@ -3,14 +3,14 @@ from numpy import sin, pi, cos, linspace
 epsilon = 10 ** (-6)
 
 print("------Выберите функцию------")
-print("1 === x ** 2 - sin(x)")
-print("2 === x * cos(2 * x) + 1")
+print("part_1 === x ** part_2 - sin(x)")
+print("part_2 === x * cos(part_2 * x) + part_1")
 
 choose = (input())
-# choose = 1
+# choose = part_1
 
 match choose:
-    case '1':
+    case 'part_1':
         def func(x):
             return x ** 2 - sin(x)
 
@@ -26,7 +26,7 @@ match choose:
         def sec_dif_func(x):
             return 2 + sin(x)
 
-    case '2':
+    case 'part_2':
         def func(x):
             return x * cos(2 * x) + 1
 
