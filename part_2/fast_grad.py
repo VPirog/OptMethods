@@ -1,7 +1,8 @@
+from numpy import linspace
 from part_1 import golden_section
 from example import *
 
-alpha_min = 0.0001
+alpha_min = 0.1
 alpha_max = 1.0
 
 
@@ -47,6 +48,8 @@ def gradient(x0, eps):
 x_list = [np.array([1, 2, 3])]
 a = 0.001
 eps = 10 ** (-5)
-print(f(gradient_descent(np.array([1, 2, 3]), eps)))
+t = gradient_descent(np.array([1, 2, 3]), eps)
+print(t, f(t))
+t = gradient(np.array([1, 2, 3]), eps)
+print(t, f(t))
 
-print(f(gradient(np.array([1, 2, 3]), eps)))

@@ -1,6 +1,4 @@
-# part_2.part_1.part_2.part_2
-# Исследующий поиск
-
+from example import *
 
 
 def until_search(base_point, radius, func):
@@ -29,23 +27,24 @@ def until_search(base_point, radius, func):
     return new_base_point  # Возвращаем базисную точку
 
 
-# Метод поиска Хука-Дживса
-def hooke_jeeves_method(old_base_point, h, e, f):
+def hooke_jeeves_method(old_base_point, h, e, func):
     z = 0.1
+    i = 0
     run_outer_loop = True
     while run_outer_loop:
+        i += 1
         run_outer_loop = False
         run_inner_loop = True
         xk = old_base_point  # step1
-        base_ponit = until_search(old_base_point, h, f)  # step2
+        base_ponit = until_search(old_base_point, h, func)  # step2
         while run_inner_loop:
             run_inner_loop = False
             for i in range(len(old_base_point)):  # step3
                 xk[i] = old_base_point[i] + 2 * (base_ponit[i] - old_base_point[i])
-            x = until_search(xk, h, f)  # step4
+            x = until_search(xk, h, func)  # step4
             old_base_point = base_ponit  # step5
-            fx = f(x)
-            fb1 = f(old_base_point)
+            fx = func(x)
+            fb1 = func(old_base_point)
             if fx < fb1:  # step6
                 base_ponit = x
                 run_inner_loop = True  # to step3
@@ -65,11 +64,10 @@ def hooke_jeeves_method(old_base_point, h, e, f):
     return old_base_point  # step10
 
 
+precision = 10 ** (-5)
 
-precision = 0.01
-
-print(hooke_jeeves_method([1, 1, 1], [1, 1, 1], precision, f),
-      f(hooke_jeeves_method([1, 1, 1], [1, 1, 1], precision, f)))
+print(hooke_jeeves_method([1, 1], [1, 1], precision, ff),
+      ff(hooke_jeeves_method([1, 1], [1, 1], precision, ff)))
 
 """Данный код реализует метод конфигураций Хука-Дживса для поиска минимума многомерной функции. Метод состоит из следующих шагов:
 

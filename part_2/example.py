@@ -15,3 +15,4 @@ def grad_f(x):
 
 def grad_ff(x):
     return np.array([20 * x[0] + 3 * x[1], 3 * x[0] + 2 * x[1] + 10])
+
