@@ -66,8 +66,8 @@ def hooke_jeeves_method(old_base_point, h, e, func):
 
 precision = 10 ** (-5)
 
-print(hooke_jeeves_method([1, 1], [1, 1], precision, ff),
-      ff(hooke_jeeves_method([1, 1], [1, 1], precision, ff)))
+print(hooke_jeeves_method([1, 1], [1, 1], precision, f),
+      f(hooke_jeeves_method([1, 1], [1, 1], precision, f)))
 
 """Данный код реализует метод конфигураций Хука-Дживса для поиска минимума многомерной функции. Метод состоит из следующих шагов:
 

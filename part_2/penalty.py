@@ -1,36 +1,43 @@
 import numpy as np
 from scipy.optimize import minimize
+from melder_mid import nelder_mead
 
 
-# objective function
-def f(x):
-    return 10 * x[0] ** 2 + 3 * x[0] * x[1] + x[1] ** 2 + 10 * x[1]
+# Ваша функция f
+def func(x):
+    return -x[0] + x[1] ** 2 - 2 * x[1]
 
 
-# penalty function
-def P(x, t):
-    return t * (x[0] + x[1] - 2) ** 2
+def penalty(x, Ak):
+    return Ak * (max(0, 3 * x[0] ** 2 + 2 * x[1] ** 2 - 6)) ** 2
 
 
-# combined objective and penalty function
-def F(x, t):
-    return f(x) + P(x, t)
+def objective_with_penalty(x, t):
+    return func(x) + penalty(x, t)
 
 
-# initial guess
+# Начальное значение переменных
 x0 = np.array([0, 0])
 
-# penalty coefficient
-t = 1
+# Коэффициент штрафа
+max_iter = 1000000
+result = []
+for j in range(1, 7):
+    result = []
+    eps = 10 ** (-j)
+    print(f"точность равна: {eps}")
+    for i in range(max_iter):
+        penalty_coefficient = i + 1
+        # Минимизация функции с штрафными функциями, используя nelder_mead
+        result.append(nelder_mead(lambda x: objective_with_penalty(x, penalty_coefficient), x0))
+        if i % 2 == 0 and i != 0:
+            if np.linalg.norm(result[i] - result[int(i / 2)]) < eps:
+                print(f"Число итераций: {i}")
+                break
 
-# optimization loop
-for i in range(10):
-    # minimize combined function using Nelder-Mead
-    res = minimize(lambda x: F(x, t), x0, method='Nelder-Mead')
-    x0 = res.x
-    t *= 10
-
-# print results
-print("Result of Penalty method: ")
-print("Best point is: %s" % (x0))
-print("Minimum value is: %s" % (f(x0)))
+    print("Optimal solution:")
+    formatted_result = np.vectorize(lambda x: "{:.{}f}".format(float(x), j + 1))(result[-1])
+    formatted_func_result = np.vectorize(lambda x: "{:.{}f}".format(float(x), j + 1))(func(result[-1]))
+    print(formatted_result, formatted_func_result)
+    print('------------------------')
+# Вывод результатов

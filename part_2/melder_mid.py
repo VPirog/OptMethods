@@ -65,6 +65,6 @@ def nelder_mead(f, x0, alpha=1, beta=0.5, gamma=2, maxiter=10000, tol=1e-6):
     return v[0]
 
 
-print(nelder_mead(func, np.array([0, 0, 0])))
-
-print(nelder_mead(ff, np.array([0, 0])))
+# print(nelder_mead(f, np.array([0, 0, 0])))
+#
+# print(nelder_mead(f, np.array([0, 0])))
